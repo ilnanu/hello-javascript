@@ -6,11 +6,12 @@ Vídeo: https://youtu.be/1glVfFxj8a4?t=11575
 // Loops o bucles
 
 // for
-
+console.log("For")
 for (let i = 0; i < 5; i++) {
     console.log(`Hola ${i}`)
 }
 
+console.log("For con arrays")
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8]
 
 for (let i = 0; i < numbers.length; i++) {
@@ -18,6 +19,7 @@ for (let i = 0; i < numbers.length; i++) {
 }
 
 // while
+console.log("While")
 
 let i = 0
 while (i < 5) {
@@ -30,26 +32,26 @@ while (i < 5) {
 // }
 
 // do while
-
+console.log("Do while")
 i = 6
 do {
     console.log(`Hola ${i}`)
     i++
 } while (i < 5)
 
-// for of
+// for of (recorrer una estrucutura iterable, como un foreach)
+console.log("For of")
+let myArray = [1, 2, 3, 4]
 
-myArray = [1, 2, 3, 4]
+let mySet = new Set(["Brais", "Moure", "mouredev", 37, true, "braismoure@mouredev.com"])
 
-mySet = new Set(["Brais", "Moure", "mouredev", 37, true, "braismoure@mouredev.com"])
-
-myMap = new Map([
+let myMap = new Map([
     ["name", "Brais"],
     ["email", "braismoure@mouredev.com"],
     ["age", 37]
 ])
 
-myString = "¡Hola, JavaScript!"
+let myString = "¡Hola, JavaScript!"
 
 for (let value of myArray) {
     console.log(value)
@@ -68,7 +70,7 @@ for (let value of myString) {
 }
 
 // break y continue
-
+console.log("Break y continue")
 for (let i = 0; i < 10; i++) {
     if (i == 5) {
         continue
