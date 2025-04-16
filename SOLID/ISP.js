@@ -97,3 +97,80 @@ robot.trabajar();   // ✅
  * 2. Aplica el ISP a la implementación.
  * 3. Desarrolla un código que compruebe que se cumple el principio.
  */
+
+// Interfaces específicas (segregadas)
+class IImpresoraBN {
+    imprimirBN(documento) {
+        throw new Error("Debe implementar imprimirBN");
+    }
+}
+
+class IImpresoraColor {
+    imprimirColor(documento) {
+        throw new Error("Debe implementar imprimirColor");
+    }
+}
+
+class IScanner {
+    escanear(documento) {
+        throw new Error("Debe implementar escanear");
+    }
+}
+
+class IFax {
+    enviarFax(documento, destino) {
+        throw new Error("Debe implementar enviarFax");
+    }
+}
+
+// Impresora Blanco y Negro
+class ImpresoraBN extends IImpresoraBN {
+    imprimirBN(documento) {
+        console.log(`🖨️ Impresora B/N: Imprimiendo documento: "${documento}" en blanco y negro.`);
+    }
+}
+
+// Impresora Color
+class ImpresoraColor extends IImpresoraColor {
+    imprimirColor(documento) {
+        console.log(`🖨️ Impresora Color: Imprimiendo documento: "${documento}" a color.`);
+    }
+}
+
+// Impresora Multifunción
+class ImpresoraMultifuncion extends IImpresoraBN {
+    imprimirBN(documento) {
+        console.log(`📠 Multifunción: Imprimiendo documento: "${documento}" en blanco y negro.`);
+    }
+    imprimirColor(documento) {
+        console.log(`📠 Multifunción: Imprimiendo documento: "${documento}" a color.`);
+    }
+    escanear(documento) {
+        console.log(`📠 Multifunción: Escaneando documento: "${documento}".`);
+    }
+    enviarFax(documento, destino) {
+        console.log(`📠 Multifunción: Enviando fax del documento "${documento}" a ${destino}.`);
+    }
+}
+
+// Asignamos interfaces adicionales a la multifunción
+Object.assign(ImpresoraMultifuncion.prototype, new IImpresoraColor(), new IScanner(), new IFax());
+
+// Creamos las impresoras
+const bn = new ImpresoraBN();
+const color = new ImpresoraColor();
+const multi = new ImpresoraMultifuncion();
+
+// Probamos las funcionalidades disponibles
+
+console.log("\n🔹 Impresora Blanco y Negro");
+bn.imprimirBN("Contrato");
+
+console.log("\n🔹 Impresora Color");
+color.imprimirColor("Folleto publicitario");
+
+console.log("\n🔹 Impresora Multifunción");
+multi.imprimirBN("Factura");
+multi.imprimirColor("Informe");
+multi.escanear("Pasaporte");
+multi.enviarFax("Formulario", "987-654-321");
