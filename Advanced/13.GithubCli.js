@@ -21,7 +21,6 @@
  *
  * Puedes intentar controlar los diferentes errores.
  */
-#!/usr/bin / env node
 
 const inquirer = require('inquirer');
 const simpleGit = require('simple-git');
